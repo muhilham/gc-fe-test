@@ -1,6 +1,6 @@
 ### Run Locally
 
-    git clone http://gitlab.tanihub.com/muhilham/gc-fe-test.git
+    git clone http://github.com/muhilham/gc-fe-test.git
     cd FE-TEST
     yarn install
 
