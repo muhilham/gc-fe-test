@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
-import CardContent from '@material-ui/core/CardContent'
 import Collapse from '@material-ui/core/Collapse'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
@@ -16,9 +15,9 @@ import Box from '@material-ui/core/Box'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
 import DraftsIcon from '@material-ui/icons/Drafts'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
+import CallIcon from '@material-ui/icons/Call'
 
 import { Divider } from '@material-ui/core'
 
@@ -56,6 +55,7 @@ function Contact(props) {
     return setExpanded([cell, ...expanded])
   }
 
+  console.log(props.posts.results[0])
   return (
     <Container maxWidth="sm">
       <Box my={7}>
@@ -98,6 +98,24 @@ function Contact(props) {
                   </ListItemIcon>
                   <Typography variant="subtitle1" component="p">
                     {`${contact.location.city}, ${contact.location.country}`}
+                  </Typography>
+                </ListItem>
+
+                <ListItem button>
+                  <ListItemIcon>
+                    <CallIcon />
+                  </ListItemIcon>
+                  <Typography variant="subtitle1" component="p">
+                    {`${contact.cell}`}
+                  </Typography>
+                </ListItem>
+
+                <ListItem button>
+                  <ListItemIcon>
+                    <CallIcon />
+                  </ListItemIcon>
+                  <Typography variant="subtitle1" component="p">
+                    {`${contact.phone}`}
                   </Typography>
                 </ListItem>
 
