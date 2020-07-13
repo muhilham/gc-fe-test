@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import Card from '@material-ui/core/Card'
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Contact(props) {
+function Contact({ posts }) {
   const classes = useStyles()
   const [expanded, setExpanded] = React.useState([])
 
@@ -58,7 +59,7 @@ function Contact(props) {
   return (
     <Container maxWidth="sm">
       <Box my={7}>
-        {props.posts.results && props.posts.results.map((contact) => (
+        {posts.results && posts.results.map((contact) => (
           <Card className={classes.root} style={{ marginBottom: 20 }} key={contact.email}>
             <CardHeader
               avatar={(
@@ -128,6 +129,14 @@ function Contact(props) {
       </Box>
     </Container>
   )
+}
+
+Contact.defaultProps = {
+  posts: {},
+}
+
+Contact.propTypes = {
+  posts: PropTypes.objectOf(PropTypes.object),
 }
 
 export default Contact
