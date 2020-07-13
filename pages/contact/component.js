@@ -83,42 +83,44 @@ function Contact(props) {
             />
             <Divider />
             <Collapse in={expanded.includes(contact.cell)} timeout="auto" unmountOnExit>
-              <List component="nav" aria-label="main mailbox folders">
-                <ListItem button>
-                  <ListItemIcon>
-                    <DraftsIcon />
-                  </ListItemIcon>
-                  <Typography variant="subtitle1" component="p">{contact.email}</Typography>
-                </ListItem>
+              {expanded.includes(contact.cell) && (
+                <List component="nav" aria-label="main mailbox folders">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <DraftsIcon />
+                    </ListItemIcon>
+                    <Typography variant="subtitle1" component="p">{contact.email}</Typography>
+                  </ListItem>
 
-                <ListItem button>
-                  <ListItemIcon>
-                    <LocationOnIcon />
-                  </ListItemIcon>
-                  <Typography variant="subtitle1" component="p">
-                    {`${contact.location.city}, ${contact.location.country}`}
-                  </Typography>
-                </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <LocationOnIcon />
+                    </ListItemIcon>
+                    <Typography variant="subtitle1" component="p">
+                      {`${contact.location.city}, ${contact.location.country}`}
+                    </Typography>
+                  </ListItem>
 
-                <ListItem button>
-                  <ListItemIcon>
-                    <CallIcon />
-                  </ListItemIcon>
-                  <Typography variant="subtitle1" component="p">
-                    {`${contact.cell}`}
-                  </Typography>
-                </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <CallIcon />
+                    </ListItemIcon>
+                    <Typography variant="subtitle1" component="p">
+                      {`${contact.cell}`}
+                    </Typography>
+                  </ListItem>
 
-                <ListItem button>
-                  <ListItemIcon>
-                    <CallIcon />
-                  </ListItemIcon>
-                  <Typography variant="subtitle1" component="p">
-                    {`${contact.phone}`}
-                  </Typography>
-                </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <CallIcon />
+                    </ListItemIcon>
+                    <Typography variant="subtitle1" component="p">
+                      {`${contact.phone}`}
+                    </Typography>
+                  </ListItem>
 
-              </List>
+                </List>
+              )}
             </Collapse>
           </Card>
         ))}
