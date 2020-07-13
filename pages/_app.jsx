@@ -7,26 +7,6 @@ import theme from '../src/theme'
 
 import { wrapper } from '../redux'
 
-// class MyApp extends App {
-//   static async getInitialProps({ Component, ctx }) {
-//     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
-
-//     // Anything returned here can be access by the client
-//     return { pageProps }
-//   }
-
-//   render() {
-//     // Information that was returned  from 'getInitialProps' are stored in the props i.e. pageProps
-//     const { Component, pageProps, store } = this.props
-
-//     return (
-//       <Provider store={store}>
-//         <Component {...pageProps} />
-//       </Provider>
-//     )
-//   }
-// }
-
 const MyApp = ({ Component, pageProps }) => {
   React.useEffect(() => {
     // Remove the server-side injected CSS.

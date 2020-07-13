@@ -55,11 +55,10 @@ function Contact(props) {
     return setExpanded([cell, ...expanded])
   }
 
-  console.log(props.posts.results[0])
   return (
     <Container maxWidth="sm">
       <Box my={7}>
-        {props.posts.results.map((contact) => (
+        {props.posts.results && props.posts.results.map((contact) => (
           <Card className={classes.root} style={{ marginBottom: 20 }} key={contact.email}>
             <CardHeader
               avatar={(

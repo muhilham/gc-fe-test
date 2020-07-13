@@ -21,5 +21,7 @@ export default function initStore(initialState) {
   return store
 }
 
+console.log('rootReducers', rootReducers)
+
 // export an assembled wrapper
 export const wrapper = createWrapper(() => initStore(), { debug: true })

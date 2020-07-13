@@ -1,31 +1,26 @@
 import { connect } from 'react-redux'
-import { decrementCounter, incrementCounter } from 'ducks/Counter'
+import { setPostContact } from 'ducks/PhoneBook'
+import { wrapper } from 'wrapper'
 import Component from './component'
 
-export async function getStaticProps() {
-  const res = await fetch('https://randomuser.me/api/?results=50')
-  const posts = await res.json()
+export const getStaticProps = wrapper.getStaticProps(
+  async ({ store, preview }) => {
+    const res = await fetch('https://randomuser.me/api/?results=50')
+    const posts = await res.json()
+    store.dispatch(setPostContact(posts))
+  },
+)
 
+function mapStateToProps(state) {
   return {
-    props: {
-      posts,
-    },
-  }
-}
-
-function mapStateToProps(state, ownProps) {
-  return {
-    counter: state.Counter.counterVal,
+    posts: state.PhoneBook.contacts,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     inc(val) {
-      dispatch(incrementCounter(val))
-    },
-    dec(val) {
-      dispatch(decrementCounter(val))
+      dispatch(setPostContact(val))
     },
   }
 }

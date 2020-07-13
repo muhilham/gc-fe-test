@@ -15,6 +15,7 @@
           "config": "./config",
           "components": "./components",
           "ducks": "./redux/ducks",
+          "wrapper": "./redux",
           "hoc": "./hoc",
           "lib": "./lib",
           "node_modules": "./node_modules",

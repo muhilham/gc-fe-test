@@ -1,33 +1,23 @@
-export const AUTH_ME = 'AUTH_ME'
-export const AUTH_ME_CLEAN = 'AUTH_ME_CLEAN'
-export const AUTH_ME_SUCCESS = 'AUTH_ME_SUCCESS'
-export const AUTH_ME_FAILURE = 'AUTH_ME_FAILURE'
+import { HYDRATE } from 'next-redux-wrapper'
+
+export const PHONEBOOK_LOAD = 'PHONEBOOK_LOAD'
 
 const INITIAL_STATE = {
-  refresh: {
-    accessToken: '',
-    expiresIn: 0,
-  },
-  error: {
-    message: '',
-  },
-  isAuthenticated: false,
-  isError: false,
-  isLoading: false,
-  me: {
-    auth: {},
-    detail: {},
-    provider: [],
-    user: {},
-  },
+  contacts: {},
 }
 
-const Auth = (state = INITIAL_STATE, { type, payload }) => {
+const PhoneBook = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-  case AUTH_ME:
+  case HYDRATE:
+    return {
+      ...state.PhoneBook,
+      ...payload.PhoneBook,
+    }
+
+  case PHONEBOOK_LOAD:
     return {
       ...state,
-      isLoading: true,
+      contacts: payload,
     }
 
   default:
@@ -35,10 +25,11 @@ const Auth = (state = INITIAL_STATE, { type, payload }) => {
   }
 }
 
-export function authMe() {
+export function setPostContact(payload) {
   return {
-    type: AUTH_ME,
+    type: PHONEBOOK_LOAD,
+    payload,
   }
 }
 
-export default Auth
+export default PhoneBook
